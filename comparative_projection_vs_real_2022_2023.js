@@ -29,11 +29,10 @@ async function comparative_projection_vs_real_2022_2023() {
 
         const pool = await connectToDatabase(databases.db_Fk)
 
-        /*for (let i = 0; i < 20 /!*dataArray.length*!/; i++) {
+        for (let i = 0; i < dataArray.length; i++) {
             try {
                 const data = dataArray[i];
-                //console.log(`Processing entry ${i + 1} out of ${dataArray.length}`);
-                console.log(`Processing entry ${i + 1} out of 20`);
+                console.log(`Processing entry ${i + 1} out of ${dataArray.length}`);
 
                 const result = await pool.request()
                     .input('semana', sql.TYPES.Int, data.Semana)
@@ -44,7 +43,6 @@ async function comparative_projection_vs_real_2022_2023() {
                 const reception = result.recordset[0].Reception;
 
                 data.recepcion = reception;
-
             } catch (error) {
                 if (error.message.includes("Date record already exists")) {
                     errorMessages.push(`Entry ${i + 1}: ${error.message}`);
@@ -52,7 +50,7 @@ async function comparative_projection_vs_real_2022_2023() {
                     errorMessages.push(`Error processing entry ${i + 1}: ${error.message}`);
                 }
             }
-        }*/
+        }
 
         await generateExcel(dataArray);
 
