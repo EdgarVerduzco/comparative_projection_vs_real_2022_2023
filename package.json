@@ -1,0 +1,18 @@
+{
+  "name": "comparative_proyection_vs_real_reception2022-2023",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Edgar Verduzco",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "aws-sdk": "^2.1447.0",
+    "csv-parser": "^3.0.0",
+    "mssql": "^9.2.0",
+    "xlsx-populate": "^1.21.0"
+  }
+}
