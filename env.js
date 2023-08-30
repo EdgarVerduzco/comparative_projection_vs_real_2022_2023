@@ -1,15 +1,14 @@
 'use strict';
 //#region SCRIPTS
 const script_get_reception_orchard_week_year = `
-SELECT
-    ISNULL(SUM(r.CantEsc), 0) AS Reception
-FROM
-    Trazabilidad.dbo.Recepcion r
-INNER JOIN Trazabilidad.dbo.Huerto h ON r.idHuerto = h.id
-WHERE
-    DATEPART(WEEK, CONVERT(DATE, r.FechaRecepcion)) = @semana
-    AND DATEPART(YEAR, CONVERT(DATE, r.FechaRecepcion)) = @anio
-    AND h.idSAP = @idHuerto;
+SELECT ISNULL(SUM(r.CantEsc), 0)  AS ReceptionTotal,
+       ISNULL(SUM(r.Cantidad), 0) AS ReceptionAceptada
+FROM Trazabilidad.dbo.Recepcion r
+         INNER JOIN Trazabilidad.dbo.Huerto h ON r.idHuerto = h.id
+WHERE DATEPART(WEEK, CONVERT(DATE, r.FechaRecepcion)) = @semana
+  AND DATEPART(YEAR, CONVERT(DATE, r.FechaRecepcion)) = @anio
+  AND h.idSAP = @idHuerto
+  AND r.Estatus = 'Aceptada'
 `
 
 //#endregion

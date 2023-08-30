@@ -40,9 +40,12 @@ async function comparative_projection_vs_real_2022_2023() {
                     .input('idHuerto', sql.TYPES.Int, data.Codigo_Huerto)
                     .query(env.SCRIPTS.SCRIPT_GET_RECEPTION_ORCHARD_WEEK_YEAR);
 
-                const reception = result.recordset[0].Reception;
+                const receptions = result.recordset[0];
+                data.ReceptionTotal = receptions.ReceptionTotal;
+                data.ReceptionAceptada = receptions.ReceptionAceptada;
 
-                data.recepcion = reception;
+                console.log(data)
+
             } catch (error) {
                 if (error.message.includes("Date record already exists")) {
                     errorMessages.push(`Entry ${i + 1}: ${error.message}`);
