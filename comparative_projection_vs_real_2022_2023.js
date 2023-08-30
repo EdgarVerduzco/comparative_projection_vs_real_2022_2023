@@ -43,9 +43,6 @@ async function comparative_projection_vs_real_2022_2023() {
                 const receptions = result.recordset[0];
                 data.ReceptionTotal = receptions.ReceptionTotal;
                 data.ReceptionAceptada = receptions.ReceptionAceptada;
-
-                console.log(data)
-
             } catch (error) {
                 if (error.message.includes("Date record already exists")) {
                     errorMessages.push(`Entry ${i + 1}: ${error.message}`);
